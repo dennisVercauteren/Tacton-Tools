@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Tacton Tools</title>
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+      <link rel="icon" type="image/png" href="favicon.png">
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.js"></script>
+      <link rel="stylesheet" href="styles.css">
+      <script src="script.js" defer></script>
+   </head>
+   <body>
+      <div class="container-fluid">
+         <div class="d-flex align-items-center my-4">
+             <img src="favicon.png" alt="Tacton Tools Logo" class="logo">
+             <h1 class="text-left mb-0">Tacton Tools</h1>
+         </div>
+         <div class="row">
+               <div class="col-md-5">
+                  <h3>Input:</h3>
+                  <button type="button" class="btn btn-secondary full-width-button" onclick="copyToClipboard('input_xml')">Copy</button>
+                  <textarea class="form-control mb-2" id="input_xml" rows="30"></textarea>
+               </div>
+               <div class="col-md-2">
+                  <div class="form-group mt-3">
+                     <label for="replace_from">Replace From (string): 
+                     <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Enter the content that needs to be replaced"></i>
+                     </label>
+                     <input type="text" class="form-control" id="replace_from">
+                  </div>
+                  <div class="form-group">
+                    <label for="replace_to">Replace To (comma-separated list): 
+                    <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Enter multiple values separated by commas to create new lines in the XML. Example: Value1, Value2, Value3"></i>
+                    </label>
+                    <textarea class="form-control" id="replace_to" rows="5"></textarea>               
+                    <p>Options:</p>
+                    <div class="button-group">
+                      <button type="button" class="btn btn-secondary full-width-button" onclick="increase()">value+</button>
+                      <button type="button" class="btn btn-secondary quarter-width-button" onclick="appendToReplaceTo('left')">←</button>
+                      <button type="button" class="btn btn-secondary quarter-width-button" onclick="appendToReplaceTo('right')">→</button>
+                      <button type="button" class="btn btn-secondary quarter-width-button" onclick="appendToReplaceTo('upper')">↑</button>
+                      <button type="button" class="btn btn-secondary quarter-width-button" onclick="appendToReplaceTo('lower')">↓</button>
+                      <button type="button" class="btn btn-secondary full-width-button" onclick="appendToReplaceFrom('Metal_Frame_Assembly_01');appendToReplaceTo('Metal_Frame_Assembly_02,Metal_Frame_Assembly_03,Metal_Frame_Assembly_04,Metal_Frame_Assembly_05,Metal_Frame_Assembly_06,Metal_Frame_Assembly_07,Metal_Frame_Assembly_08,Metal_Frame_Assembly_09,Metal_Frame_Assembly_10')">Metal_Assembly</button>
+                    </div>
+                    <p>Replace:</p>
+                    <button type="button" class="btn btn-success full-width-button" onclick="replaceXml()">Replace xml</button>
+                    <button type="button" class="btn btn-success full-width-button" onclick="replaceXmlPlus()">Replace xml Cases (WIP)</button>
+                    <p>Generate Auxliary attributes:</p>
+                    <button type="button" class="btn btn-warning full-width-button" onclick="generateDaDimensionXml()">Attr. -> DA_dimension.</button>
+                    <button type="button" class="btn btn-warning full-width-button" onclick="generateDaFeatureStateXml()">Attr. -> DA_feature_state.</button>
+                    <p>Misc:</p>
+                    <button type="button" class="btn btn-danger full-width-button" onclick="createComponentFilter()">Create Component Filter</button>
+                    <button type="button" class="btn btn-danger full-width-button" onclick="updateXmlDescriptions()">Update Component description</button>
+                    <button type="button" class="btn btn-danger full-width-button" onclick="updateXmlNumbering()">Update Component numbering</button>
+                  </div>
+               </div>
+               <div class="col-md-5">
+                  <h3>Output:</h3>
+                  <button type="button" class="btn btn-secondary full-width-button" onclick="copyToClipboard('output_xml')">Copy</button>
+                  <textarea class="form-control mb-2" id="output_xml" rows="30"></textarea>
+               </div>
+         </div>
+      </div>
+     <script src="script.js"></script>
+   </body>
+</html>
